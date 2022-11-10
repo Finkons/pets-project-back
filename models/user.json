@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Ann",
+        "email": "barbos@gmail.com",
+        "password": "fgkjnm",
+        "birthday": "22.11.2222",
+        "city": "Akhtyrka, Sumy",
+        "phone": "+380671234567",
+        "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
+    },
+    {
+        "name": "Serhio",
+        "email": "sentino@gmail.com",
+        "password": "fgkjnm",
+        "birthday": "22.11.1999",
+        "city": "Oxford, Ox",
+        "phone": "+380632323555",
+        "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
+    }
+]

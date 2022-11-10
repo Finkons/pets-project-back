@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Jack",
+        "birthday": "22.11.2222",
+        "comments": "Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor s",
+        "breed": "Pomeranian",
+        "owner": "",
+        "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
+    },
+    {
+        "name": "Sally",
+        "birthday": "20.06.1900",
+        "comments": "Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor s",
+        "breed": "beagle",
+        "owner": "",
+        "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
+    },
+    {
+        "name": "Donna",
+        "birthday": "20.10.2018",
+        "comments": "Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor s",
+        "breed": "labrador retriever",
+        "owner": "",
+        "avatar": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/183/barbos-logo_5c078b136ea2f.jpg"
+    }
+]

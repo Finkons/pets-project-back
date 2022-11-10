@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Барбос",
+        "time": {
+            "MN": "8:00- 20:00",
+            "TU": "8:00- 20:00",
+            "WE": "8:00- 20:00",
+            "TH": "8:00- 20:00",
+            "FR": "8:00- 20:00",
+            "SA": "8:00- 20:00",
+            "SU": "8:00- 20:00"
+        },
+        "adress": "Grigorenka Street, 25 ",
+        "phone": "+3110 44 290-03-29",
+        "email": "barbos@gmail.com",
+        "logo": "https://s.0312.ua/section/newsInText/upload/images/news/intext/000/050/1113/barbos-logo_5c0711b136ea2f.jpg",
+        "link": "https://www.facebook.com/NGO.Barbos"
+    },
+    {
+        "name": "Whiskas",
+        "time": {
+            "MN": "8:00- 19:00",
+            "TU": "8:00- 19:00",
+            "WE": "8:00- 19:00",
+            "TH": "8:00- 19:00",
+            "FR": "8:00- 19:00",
+            "SA": "8:00- 19:00",
+            "SU": "8:00- 19:00"
+        },
+        "adress": "------------",
+        "phone": "0-1100-500-155",
+        "email": "whiskas@gmail.com",
+        "logo": "https://www.whiskas.ua/Content/img/public/logo.png",
+        "link": "https://www.whiskas.ua/"
+    },
+    {
+        "name": "ЛКП 'ЛЕВ' ",
+        "time": {
+            "MN": "8:00- 19:00",
+            "TU": "8:00- 19:00",
+            "WE": "8:00- 19:00",
+            "TH": "8:00- 19:00",
+            "FR": "8:00- 19:00",
+            "SA": "8:00- 19:00",
+            "SU": "8:00- 19:00"
+        },
+        "adress": "Promyslova Street, 56 ",
+        "phone": "(068) 535-45-45",
+        "email": "lkplev@gmail.com",
+        "logo": "https://lkplev.com/images/logo.png",
+        "link": "https://lkplev.com/"
+    },
+    {
+        "name": "Happy paw",
+        "time": {
+            "MN": "09:00- 19:00",
+            "TU": "09:00- 19:00",
+            "WE": "09:00- 19:00",
+            "TH": "09:00- 19:00",
+            "FR": "09:00- 19:00",
+            "SA": "09:00- 19:00",
+            "SU": "09:00- 19:00"
+        },
+        "adress": "Chota Rystaveli Street, 44",
+        "phone": "+380 44 290-03-29",
+        "email": "hello@happypaw.ua",
+        "logo": "",
+        "link": "https://happypaw.ua/ua/"
+    },
+    {
+        "name": "PetHelp",
+        "time": {},
+        "adress": "------------",
+        "phone": "------------",
+        "email": "pithelp.ukr@gmail.com",
+        "logo": "https://pethelp.com.ua/images/logo3.png",
+        "link": "https://pethelp.com.ua/"
+    },
+    {
+        "name": "Сіріус",
+        "time": {
+            "MN": "11:00- 16:00",
+            "TU": "11:00- 16:00",
+            "WE": "11:00- 16:00",
+            "TH": "11:00- 16:00",
+            "FR": "11:00- 16:00",
+            "SA": "11:00- 16:00",
+            "SU": "11:00- 16:00"
+        },
+        "adress": "Fedorivka, Kyiv Oblast",
+        "phone": "+38 093 193 40 69",
+        "email": "dogcat.sirius@gmail.com",
+        "logo": "https://dogcat.com.ua/images/logo-horizontal.svg",
+        "link": "https://dogcat.com.ua/"
+    },
+    {
+        "name": "PURINA",
+        "time": {},
+        "adress": "------------",
+        "phone": "1-800-778-7462",
+        "email": "info@ua.nestle.com",
+        "logo": "https://www.whiskas.ua/Content/img/public/logo.png",
+        "link": "https://www.purina.ua/"
+    },
+    {
+        "name": "Josera",
+        "time": {
+            "MN": "09:00- 17:00",
+            "TU": "09:00- 17:00",
+            "WE": "09:00- 17:00",
+            "TH": "09:00- 17:00",
+            "FR": "09:00- 17:00",
+            "SA": "09:00- 17:00",
+            "SU": "09:00- 17:00"
+        },
+        "adress": "Sholom-Aleikhema St, 11",
+        "phone": "0 800 409 060",
+        "email": "info@josera.ua",
+        "logo": "https://josera.ua/static/frontend/Magecom/josera/uk_UA/images/logo.svg",
+        "link": "https://josera.ua/"
+    },
+    {
+        "name": "LICO",
+        "time": {
+            "MN": "09:00- 20:00",
+            "TU": "09:00- 20:00",
+            "WE": "09:00- 20:00",
+            "TH": "09:00- 20:00",
+            "FR": "09:00- 20:00",
+            "SA": "09:00- 20:00",
+            "SU": "09:00- 20:00"
+        },
+        "adress": "Dryhetiv Street, 77",
+        "phone": "+38 097 509 8005",
+        "email": "lico@gmail.com",
+        "logo": "https://lico.vet/wp-content/uploads/2020/11/licoveterinary-e1605477412808.png",
+        "link": "https://lico.vet/"
+    }
+]
