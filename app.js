@@ -3,9 +3,9 @@ const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
-const newsRouter = require("./routes/news");
-const friendsRouter = require("./routes/friends");
-
+const newsRouter = require("./routes/api/news");
+const friendsRouter = require("./routes/api/friends");
+const noticesRouter = require("./routes/api/notices");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -15,8 +15,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/news", newsRouter);
-app.use("/friends", friendsRouter);
+app.use("/api/notices", noticesRouter);
+app.use("/api/news", newsRouter);
+app.use("/api/friends", friendsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
