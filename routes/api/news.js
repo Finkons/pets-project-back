@@ -1,8 +1,8 @@
 const express = require("express");
 
-const { friends: ctrl } = require("../controllers");
+const { news: ctrl } = require("../../controllers");
 
-const { ctrlWrapper } = require("../helpers");
+const { ctrlWrapper } = require("../../helpers");
 
 const router = express.Router();
 
