@@ -19,8 +19,12 @@ const noticeSchema = new Schema(
       max: 50,
     },
     place: {
-      type: String,
+      type: [String],
       required: true,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
     },
     favorite: {
       type: Boolean,
@@ -40,7 +44,7 @@ const noticesSchema = Joi.object({
     .required(),
   title: Joi.string().required(),
   age: Joi.number(),
-  place: Joi.string().required(),
+  place: Joi.array().required(),
   favorite: Joi.boolean(),
 });
 const updateFavoriteSchema = Joi.object({

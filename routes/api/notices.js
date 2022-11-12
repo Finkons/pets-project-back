@@ -4,7 +4,7 @@ const ctrl = require("../../controllers/notices");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const { validateBody, isValidId } = require("../../middlewares");
+const { validateBody, isValidId, authenticate } = require("../../middlewares");
 
 const { schemas } = require("../../models/notice");
 
@@ -14,8 +14,12 @@ router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.get("/:category", ctrlWrapper(ctrl.getByCategory));
 
-router.post("/", validateBody(schemas.noticesSchema), ctrlWrapper(ctrl.add));
+router.post("/", authenticate, validateBody(schemas.noticesSchema), ctrlWrapper(ctrl.add));
 
-router.delete("/:id", isValidId, ctrlWrapper(ctrl.deleteById));
+router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
+
+router.put("/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
+
+router.get("/:own", authenticate, ctrlWrapper(ctrl.getOwn));
 
 module.exports = router;
