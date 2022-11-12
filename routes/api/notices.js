@@ -18,4 +18,8 @@ router.post("/", authenticate, validateBody(schemas.noticesSchema), ctrlWrapper(
 
 router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
+router.put("/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
+
+router.get("/:own", authenticate, ctrlWrapper(ctrl.getOwn));
+
 module.exports = router;
