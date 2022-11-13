@@ -14,9 +14,7 @@ const noticeSchema = new Schema(
       required: [true, "Set title for notice"],
     },
     age: {
-      type: Number,
-      min: 1,
-      max: 50,
+      type: [String],
     },
     place: {
       type: [String],
@@ -43,8 +41,8 @@ const noticesSchema = Joi.object({
     .valueOf(...categorys)
     .required(),
   title: Joi.string().required(),
-  age: Joi.number(),
-  place: Joi.array().required(),
+  age: Joi.string(),
+  place: Joi.string().required(),
   favorite: Joi.boolean(),
 });
 const updateFavoriteSchema = Joi.object({
