@@ -8,7 +8,7 @@ const { ctrlWrapper } = require("../../helpers");
 
 const { validateBody, authenticate } = require("../../middlewares");
 
-const { schemas } = require("../../models/user");
+const { schemas } = require("../../models/user.js");
 
 router.post("/register", validateBody(schemas.registerSchema), ctrlWrapper(ctrl.register));
 
