@@ -10,6 +10,7 @@ const userSchema = new Schema(
     address: [String],
     phone: {
       type: String,
+      match: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
     },
     password: {
       type: String,
@@ -21,12 +22,19 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
+    birthday: [Number],
     token: {
       type: String,
       default: null,
     },
     avatarURL: {
       type: String,
+    },
+    role: {
+      type: String,
+      enum: ["USER", "ADMIN"],
+      default: "USER",
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }
@@ -41,9 +49,7 @@ const registerSchema = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
     .required(),
-  address: Joi.array(),
   password: Joi.string().required(),
-  phone: Joi.string(),
 });
 const loginSchema = Joi.object({
   email: Joi.string().required(),

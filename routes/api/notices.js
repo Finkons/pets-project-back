@@ -20,6 +20,6 @@ router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
 router.put("/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
 
-router.get("/:own", authenticate, ctrlWrapper(ctrl.getOwn));
+router.get("/owner", authenticate, ctrlWrapper(ctrl.getOwn));
 
 module.exports = router;
