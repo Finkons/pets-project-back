@@ -18,4 +18,6 @@ router.post("/user", authenticate, ctrlWrapper(ctrl.logout));
 
 router.get("/user", authenticate, ctrlWrapper(ctrl.current));
 
+router.put("/user", authenticate, validateBody(schemas.updateSchema), ctrlWrapper(ctrl.updateData));
+
 module.exports = router;
