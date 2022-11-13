@@ -1,11 +1,12 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
+const emailRegexp = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
 const userSchema = new Schema(
   {
     name: {
       type: String,
-      trim: true,
+      required: [true, "Name is empty"],
     },
     address: [String],
     phone: {
@@ -46,9 +47,7 @@ userSchema.post("save", handleSaveErrors);
 
 const registerSchema = Joi.object({
   name: Joi.string().required(),
-  email: Joi.string()
-    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
-    .required(),
+  email: Joi.string().pattern(new RegExp(emailRegexp)).required(),
   password: Joi.string().required(),
 });
 const loginSchema = Joi.object({
