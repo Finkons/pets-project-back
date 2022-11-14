@@ -1,12 +1,9 @@
 const { News } = require("../../models/news");
 
 const getAll = async (req, res) => {
-  const news = await News.find({});
+  const result = await News.find({});
 
-  res.json({
-    message: "success",
-    data: { result: news },
-  });
+  res.json(result);
 };
 
 module.exports = getAll;
