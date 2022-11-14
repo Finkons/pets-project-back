@@ -84,7 +84,7 @@ const loginSchema = Joi.object({
     .messages({ "string.pattern.base": "A password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number with no spaces" }),
 });
 const updateSchema = Joi.object({
-  username: Joi.string().required().messages({ "string.base": `Name must by text.` }),
+  name: Joi.string().required().messages({ "string.base": `Name must by text.` }),
   address: Joi.string(),
   phone: Joi.string().pattern(phoneRegexp).messages({ "string.pattern.base": `Phone number must have 10 digits.` }),
   birthday: Joi.string(),
