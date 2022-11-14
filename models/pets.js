@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require("joi").extend(require("@joi/date"));
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
 const petSchema = new Schema(
@@ -10,7 +10,7 @@ const petSchema = new Schema(
       required: [true, "Name is empty"],
     },
     date: {
-      type: Date,
+      type: String,
       required: [true, "Date is empty"],
     },
     breed: {
@@ -38,10 +38,10 @@ const Pet = model("pet", petSchema);
 petSchema.post("save", handleSaveErrors);
 
 const petsSchema = Joi.object({
-  name: Joi.string().required(),
-  date: Joi.string().required(),
-  breed: Joi.string().required(),
-  comments: Joi.string().required(),
+  name: Joi.string().min(2).max(16).required(),
+  date: Joi.date().format("DD.MM.YYYY").required(),
+  breed: Joi.string().min(2).max(16).required(),
+  comments: Joi.string().min(8).max(120).required(),
 });
 
 module.exports = { petsSchema, Pet };

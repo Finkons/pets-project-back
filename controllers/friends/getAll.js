@@ -1,12 +1,9 @@
 const { Friends } = require("../../models/friends");
 
 const getAll = async (req, res) => {
-  const friends = await Friends.find({});
+  const result = await Friends.find({});
 
-  res.json({
-    message: "success",
-    data: { result: friends },
-  });
+  res.json(result);
 };
 
 module.exports = getAll;
