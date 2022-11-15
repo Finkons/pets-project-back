@@ -1,9 +1,9 @@
 const { Notice } = require("../../models/notice");
-
 const { RequestError } = require("../../helpers");
 
 const getById = async (req, res) => {
-  const result = await Notice.findById(req.params.id);
+  const { id } = req.params;
+  const result = await Notice.findOne({ _id: id }).populate({ path: "owner", select: "id phone email" });
   if (result.length !== 0) {
     return res.status(200).json(result);
   }
