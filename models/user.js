@@ -60,6 +60,12 @@ const userSchema = new Schema(
       default: "USER",
       required: true,
     },
+    fans: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
   },
   { versionKey: false, timestamps: true }
 );
