@@ -2,6 +2,7 @@ const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
 const categorys = ["sell", "for-free", "lost-found"];
+const gender = ["male", "female", "young", ""];
 const noticeSchema = new Schema(
   {
     category: {
@@ -16,17 +17,29 @@ const noticeSchema = new Schema(
     age: {
       type: [String],
     },
-    place: {
+    name: {
+      type: String,
+    },
+    birthday: {
+      type: String,
+    },
+    breed: {
+      type: String,
+    },
+    location: {
       type: [String],
       required: true,
+    },
+    sex: {
+      type: String,
+      enum: gender,
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
     },
-    favorite: {
-      type: Boolean,
-      default: false,
+    price: {
+      type: String,
     },
   },
   { versionKey: false, timestamps: true }
@@ -43,7 +56,12 @@ const noticesSchema = Joi.object({
   title: Joi.string().required(),
   age: Joi.string(),
   place: Joi.string().required(),
-  favorite: Joi.boolean(),
+  name: Joi.string(),
+  birthday: Joi.string(),
+  breed: Joi.string(),
+  location: Joi.string(),
+  sex: Joi.string().valueOf(...gender),
+  price: Joi.string(),
 });
 const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
