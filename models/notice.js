@@ -6,11 +6,11 @@ const gender = ["male", "female", "young", ""];
 const locationSchema = new Schema({
   city: {
     type: String,
-    required: [true, "Set city"],
+    // required: [true, "Set city"],
   },
   region: {
     type: String,
-    required: [true, "Set region"],
+    // required: [true, "Set region"],
   },
 });
 const noticeSchema = new Schema(
@@ -67,12 +67,10 @@ const Notice = model("notice", noticeSchema);
 noticeSchema.post("save", handleSaveErrors);
 
 const noticesSchema = Joi.object({
-  category: Joi.string()
-    .valueOf(...categorys)
-    .required(),
-  title: Joi.string().required(),
+  category: Joi.string().valueOf(...categorys),
+  title: Joi.string(),
   age: Joi.string(),
-  place: Joi.string().required(),
+  place: Joi.string(),
   name: Joi.string(),
   birthday: Joi.string(),
   breed: Joi.string(),
@@ -81,7 +79,7 @@ const noticesSchema = Joi.object({
   price: Joi.string(),
 });
 const updateFavoriteSchema = Joi.object({
-  favorite: Joi.boolean().required(),
+  favorite: Joi.boolean(),
 });
 
 const schemas = { noticesSchema, updateFavoriteSchema };

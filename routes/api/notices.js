@@ -4,7 +4,7 @@ const ctrl = require("../../controllers/notices");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const { validateBody, isValidId, authenticate } = require("../../middlewares");
+const { validateBody, isValidId, authenticate, upload } = require("../../middlewares");
 
 const { schemas } = require("../../models/notice");
 
@@ -14,7 +14,7 @@ router.get("/id/:id", isValidId, ctrlWrapper(ctrl.getById));
 
 router.get("/:category", ctrlWrapper(ctrl.getByCategory));
 
-router.post("/", authenticate, validateBody(schemas.noticesSchema), ctrlWrapper(ctrl.add));
+router.post("/", authenticate, validateBody(schemas.noticesSchema), upload.single("avatar"), ctrlWrapper(ctrl.add));
 
 router.delete("/id/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
