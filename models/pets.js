@@ -7,23 +7,22 @@ const petSchema = new Schema(
       type: String,
       minlength: 2,
       maxlength: 16,
-      required: [true, "Name is empty"],
     },
     date: {
       type: String,
-      required: [true, "Date is empty"],
     },
     breed: {
       type: String,
       minlength: 2,
       maxlength: 16,
-      required: [true, "Breed is empty"],
     },
     comments: {
       type: String,
       minlength: 8,
       maxlength: 120,
-      required: [true, "Comments is empty"],
+    },
+    avatarURL: {
+      type: String,
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -38,10 +37,10 @@ const Pet = model("pet", petSchema);
 petSchema.post("save", handleSaveErrors);
 
 const petsSchema = Joi.object({
-  name: Joi.string().min(2).max(16).required(),
-  date: Joi.date().format("DD.MM.YYYY").required(),
-  breed: Joi.string().min(2).max(16).required(),
-  comments: Joi.string().min(8).max(120).required(),
+  name: Joi.string().min(2).max(16),
+  date: Joi.date().format("DD.MM.YYYY"),
+  breed: Joi.string().min(2).max(16),
+  comments: Joi.string().min(8).max(120),
 });
 
 module.exports = { petsSchema, Pet };

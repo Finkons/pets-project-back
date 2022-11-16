@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/api", authRouter);
+app.use("/api/auth", authRouter);
 app.use("/api/notices", noticesRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/friends", friendsRouter);
