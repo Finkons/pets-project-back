@@ -6,6 +6,7 @@ require("dotenv").config();
 const authRouter = require("./routes/api/auth");
 const newsRouter = require("./routes/api/news");
 const friendsRouter = require("./routes/api/friends");
+const sponsorsRouter = require("./routes/api/sponsors");
 const noticesRouter = require("./routes/api/notices");
 const petsRouter = require("./routes/api/pets");
 
@@ -22,6 +23,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/notices", noticesRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/friends", friendsRouter);
+app.use("/api/sponsors", sponsorsRouter);
 app.use("/api/user", petsRouter);
 
 app.use((req, res) => {
