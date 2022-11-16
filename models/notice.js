@@ -41,6 +41,13 @@ const noticeSchema = new Schema(
     price: {
       type: String,
     },
+    fans: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
+    favorite: { type: Boolean, default: false },
   },
   { versionKey: false, timestamps: true }
 );
