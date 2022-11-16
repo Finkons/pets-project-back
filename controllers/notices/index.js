@@ -1,5 +1,4 @@
 const add = require("./add");
-const getAll = require("./getAll");
 const getByCategory = require("./getByCategory");
 const deleteById = require("./deleteById");
 const updateFavorite = require("./updateFavorite");
@@ -9,7 +8,6 @@ const getFavorite = require("./getFavorite");
 
 module.exports = {
   add,
-  getAll,
   getByCategory,
   updateFavorite,
   deleteById,

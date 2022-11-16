@@ -4,9 +4,9 @@ const { RequestError } = require("../../helpers");
 
 const getByCategory = async (req, res) => {
   const { category } = req.params;
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 10, ...query } = req.query;
   const skip = (page - 1) * limit;
-  const result = await Notice.find({ category }, "-createdAt -updatedAt", { skip, limit });
+  const result = await Notice.find({ category, ...query }, "-createdAt -updatedAt", { skip, limit });
   if (result.length !== 0) {
     return res.status(200).json(result);
   }
