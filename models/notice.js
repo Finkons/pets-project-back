@@ -3,6 +3,16 @@ const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
 const categorys = ["sell", "for-free", "lost-found"];
 const gender = ["male", "female", "young", ""];
+const locationSchema = new Schema({
+  city: {
+    type: String,
+    required: [true, "Set city"],
+  },
+  region: {
+    type: String,
+    required: [true, "Set region"],
+  },
+});
 const noticeSchema = new Schema(
   {
     category: {
@@ -26,10 +36,7 @@ const noticeSchema = new Schema(
     breed: {
       type: String,
     },
-    location: {
-      type: [String],
-      required: true,
-    },
+    location: locationSchema,
     sex: {
       type: String,
       enum: gender,
@@ -48,6 +55,9 @@ const noticeSchema = new Schema(
       },
     ],
     favorite: { type: Boolean, default: false },
+    avatarURL: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );
