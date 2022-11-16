@@ -10,8 +10,6 @@ const { schemas } = require("../../models/notice");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getAll));
-
 router.get("/id/:id", isValidId, ctrlWrapper(ctrl.getById));
 
 router.get("/:category", ctrlWrapper(ctrl.getByCategory));
