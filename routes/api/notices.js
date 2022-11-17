@@ -10,18 +10,14 @@ const { schemas } = require("../../models/notice");
 
 const router = express.Router();
 
-router.get("/id/:id", isValidId, ctrlWrapper(ctrl.getById));
-
-router.get("/:category", ctrlWrapper(ctrl.getByCategory));
+router.get("/:id", isValidId, ctrlWrapper(ctrl.getById));
 
 router.post("/", authenticate, validateBody(schemas.noticesSchema), upload.single("avatar"), ctrlWrapper(ctrl.add));
 
-router.delete("/id/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
+router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
-router.put("/id/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
+router.put("/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
 
-router.get("/owner/:owner", authenticate, ctrlWrapper(ctrl.getOwn));
-
-router.get("/favorite/favorite", authenticate, ctrlWrapper(ctrl.getFavorite));
+router.get("/category/:category", ctrlWrapper(ctrl.getByCategory));
 
 module.exports = router;
