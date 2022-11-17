@@ -11,4 +11,6 @@ router.post("/pets", authenticate, validateBody(petsSchema), upload.single("avat
 
 router.delete("/pets/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
+router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrentUser));
+
 module.exports = router;
