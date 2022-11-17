@@ -1,4 +1,5 @@
 const { Notice } = require("../../models/notice");
+const { User } = require("../../models/user");
 const fs = require("fs/promises");
 const path = require("path");
 
@@ -14,6 +15,7 @@ const add = async (req, res) => {
   await fs.rename(tempUpload, resultUpload);
   const avatarURL = path.join("noticesAvatars", resultUpload);
   const result = await Notice.create({ avatarURL, ...req.body, owner });
+  await User.findByIdAndUpdate(owner, { $push: { pets: result._id } }, { new: true });
   res.status(201).json(result);
 };
 
