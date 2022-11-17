@@ -8,7 +8,9 @@ const newsRouter = require("./routes/api/news");
 const friendsRouter = require("./routes/api/friends");
 const sponsorsRouter = require("./routes/api/sponsors");
 const noticesRouter = require("./routes/api/notices");
-const petsRouter = require("./routes/api/pets");
+const userRouter = require("./routes/api/user");
+const favoriteRouter = require("./routes/api/favorite");
+const ownerRouter = require("./routes/api/owner");
 
 const app = express();
 
@@ -20,11 +22,13 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
+app.use("/api/notices/favorite", favoriteRouter);
+app.use("/api/notices/owner", ownerRouter);
 app.use("/api/notices", noticesRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/friends", friendsRouter);
 app.use("/api/sponsors", sponsorsRouter);
-app.use("/api/user", petsRouter);
+app.use("/api/user", userRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
