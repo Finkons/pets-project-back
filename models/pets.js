@@ -1,6 +1,7 @@
 const Joi = require("joi").extend(require("@joi/date"));
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
+
 const petSchema = new Schema(
   {
     name: {
@@ -32,7 +33,7 @@ const petSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-const Pet = model("pet", petSchema);
+const Pet = model("pets", petSchema);
 
 petSchema.post("save", handleSaveErrors);
 

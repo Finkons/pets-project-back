@@ -5,8 +5,8 @@ const gravatar = require("gravatar");
 
 const register = async (req, res) => {
   const { name, email, password, phone, address, birthday } = req.body;
-  const newUser = await User.findOne({ email });
-  if (newUser) {
+  const existUser = await User.findOne({ email });
+  if (existUser) {
     throw RequestError(409, "Email in use");
   }
   const hashPassword = await bcrypt.hash(password, 6);
@@ -21,7 +21,7 @@ const register = async (req, res) => {
     birthday,
     avatarURL,
   });
-  res.status(200).json({
+  res.status(201).json({
     message: "account created successfully",
     email: result.email,
     name: result.name,

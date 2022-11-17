@@ -14,7 +14,6 @@ const userSchema = new Schema(
       minlength: 3,
       match: nameRegexp,
       trim: true,
-      unique: true,
     },
     address: {
       type: String,
@@ -60,10 +59,16 @@ const userSchema = new Schema(
       default: "USER",
       required: true,
     },
-    fans: [
+    favorite: [
       {
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: "notices",
+      },
+    ],
+    pets: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "pets",
       },
     ],
   },
@@ -79,7 +84,7 @@ const registerSchema = Joi.object({
   phone: Joi.string().pattern(new RegExp(phoneRegexp)),
   password: Joi.string().required(),
   email: Joi.string().pattern(new RegExp(emailRegexp)).required(),
-  birthday: Joi.string().max(8),
+  birthday: Joi.string(),
 });
 
 const loginSchema = Joi.object({
