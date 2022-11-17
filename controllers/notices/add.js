@@ -6,9 +6,9 @@ const avatarsDir = path.join(__dirname, "../../", "public", "noticesAvatars");
 const add = async (req, res) => {
   const { _id: owner } = req.user;
   const { path: tempUpload, filename } = req.file;
-  const { _id } = req.user;
+  const noticeId = Date.now();
   const [extension] = filename.split(".").reverse();
-  const avatarName = `${_id}.${extension}`;
+  const avatarName = `${noticeId}.${extension}`;
   const resultUpload = path.join(avatarsDir, avatarName);
 
   await fs.rename(tempUpload, resultUpload);
