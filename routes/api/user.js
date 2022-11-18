@@ -10,7 +10,7 @@ router.post("/", authenticate, validateBody(petsSchema), upload.single("avatar")
 
 router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
-router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrentUser));
+router.get("/", authenticate, ctrlWrapper(ctrl.getCurrentUser));
 
 router.post("/logout", authenticate, ctrlWrapper(ctrl.logout));
 
