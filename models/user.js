@@ -59,10 +59,10 @@ const userSchema = new Schema(
       default: "USER",
       required: true,
     },
-    favorite: [
+    like: [
       {
         type: Schema.Types.ObjectId,
-        ref: "notices",
+        ref: "notice",
       },
     ],
     pets: [

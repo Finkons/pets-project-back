@@ -10,12 +10,14 @@ router.post("/", authenticate, validateBody(petsSchema), upload.single("avatar")
 
 router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
-router.get("/", authenticate, ctrlWrapper(ctrl.getCurrentUser));
+router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrentUser));
 
 router.post("/logout", authenticate, ctrlWrapper(ctrl.logout));
 
 router.put("/", authenticate, validateBody(schemas.updateSchema), ctrlWrapper(ctrl.updateData));
 
 router.patch("/", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
+
+router.get("/favorite", authenticate, ctrlWrapper(ctrl.getFavorite));
 
 module.exports = router;
