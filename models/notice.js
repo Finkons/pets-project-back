@@ -54,7 +54,6 @@ const noticeSchema = new Schema(
         ref: "user",
       },
     ],
-    favorite: { type: Boolean, default: false },
     avatarURL: {
       type: String,
     },

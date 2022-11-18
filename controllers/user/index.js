@@ -5,6 +5,7 @@ const getCurrentUser = require("./getCurrentUser");
 const logout = require("./logout");
 const updateAvatar = require("./updateAvatar");
 const updateData = require("./updateData");
+const getFavorite = require("./getFavorite");
 
 module.exports = {
   add,
@@ -14,4 +15,5 @@ module.exports = {
   logout,
   updateData,
   updateAvatar,
+  getFavorite,
 };

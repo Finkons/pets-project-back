@@ -4,7 +4,6 @@ const { RequestError } = require("../../helpers");
 const getFavorite = async (req, res) => {
   const { _id: userId } = req.user;
   const result = await Notice.find({ fans: userId._id });
-  console.log(111);
   if (result.length !== 0) {
     return res.status(200).json(result);
   }
