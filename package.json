@@ -1,10 +1,7 @@
 {
   "name": "pets-project-back",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": ">=16.x"
-  },
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server.js",
     "dev": "cross-env NODE_ENV=development nodemon ./server.js",
@@ -39,7 +36,7 @@
     "nodemon": "^2.0.15"
   },
   "description": "command project",
-  "main": ".eslintrc.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Finkons/nodejs-homework-rest-api.git"
