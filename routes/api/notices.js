@@ -20,4 +20,8 @@ router.put("/:id", authenticate, isValidId, ctrlWrapper(ctrl.updateFavorite));
 
 router.get("/category/:category", ctrlWrapper(ctrl.getByCategory));
 
+router.get("/favorite", authenticate, ctrlWrapper(ctrl.getFavorite));
+
+router.get("/owner/:owner", authenticate, ctrlWrapper(ctrl.getOwn));
+
 module.exports = router;

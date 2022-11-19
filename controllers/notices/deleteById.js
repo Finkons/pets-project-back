@@ -3,10 +3,11 @@ const { RequestError } = require("../../helpers");
 
 const deleteById = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   const result = await Notice.findByIdAndRemove(id);
-  if (result.length !== 0) {
-    res.status(200).json({ message: "notice delited" });
+  if (!result) {
+    throw RequestError(404, "Not found");
   }
-  throw RequestError(404, "Not found");
+  res.status(200).json({ message: "notice delited" });
 };
 module.exports = deleteById;
