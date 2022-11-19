@@ -9,7 +9,6 @@ const friendsRouter = require("./routes/api/friends");
 const sponsorsRouter = require("./routes/api/sponsors");
 const noticesRouter = require("./routes/api/notices");
 const userRouter = require("./routes/api/user");
-const ownerRouter = require("./routes/api/owner");
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
-app.use("/api/notices/owner", ownerRouter);
 app.use("/api/notices", noticesRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/friends", friendsRouter);
