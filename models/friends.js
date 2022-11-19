@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const phoneRegexp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/;
 const newsSchema = Schema(
   {
     name: {
@@ -7,14 +7,22 @@ const newsSchema = Schema(
       required: true,
       unique: true,
     },
-    time: {
-      type: String,
-    },
+    time: [
+      {
+        day: {
+          type: String,
+          enum: ["MN", "TU", "WE", "TH", "FR", "SA", "SU"],
+        },
+        start: String,
+        end: String,
+      },
+    ],
     adress: {
       type: String,
     },
     phone: {
       type: String,
+      match: phoneRegexp,
     },
     email: {
       type: String,
