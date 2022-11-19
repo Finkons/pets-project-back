@@ -18,6 +18,4 @@ router.put("/", authenticate, validateBody(schemas.updateSchema), ctrlWrapper(ct
 
 router.patch("/", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
 
-router.get("/favorite", authenticate, ctrlWrapper(ctrl.getFavorite));
-
 module.exports = router;
