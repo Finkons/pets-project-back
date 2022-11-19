@@ -1,7 +1,7 @@
 const { User } = require("../../models/user");
 const { RequestError } = require("../../helpers");
 
-const updateDate = async (req, res) => {
+const updateData = async (req, res) => {
   const { _id } = req.user;
   const result = await User.findByIdAndUpdate(_id, req.body, { new: true });
   if (!result) {
@@ -9,4 +9,4 @@ const updateDate = async (req, res) => {
   }
   res.status(200).json(result);
 };
-module.exports = updateDate;
+module.exports = updateData;
