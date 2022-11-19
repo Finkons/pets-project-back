@@ -6,11 +6,9 @@ const gender = ["male", "female", "young", ""];
 const locationSchema = new Schema({
   city: {
     type: String,
-    // required: [true, "Set city"],
   },
   region: {
     type: String,
-    // required: [true, "Set region"],
   },
 });
 const noticeSchema = new Schema(
