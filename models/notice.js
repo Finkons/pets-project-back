@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
-const categorys = ["sell", "for-free", "lost-found"];
+const categorys = ["sell", "lost/found", "in good hands"];
 const gender = ["male", "female", "young", ""];
 const locationSchema = new Schema({
   city: {
