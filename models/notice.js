@@ -22,9 +22,6 @@ const noticeSchema = new Schema(
       type: String,
       required: [true, "Set title for notice"],
     },
-    age: {
-      type: [String],
-    },
     name: {
       type: String,
     },
