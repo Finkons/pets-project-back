@@ -36,7 +36,7 @@ const noticeSchema = new Schema(
     },
     price: {
       required: function () {
-        return this.category === categorys[0];
+        return this.category === "sell";
       },
       type: String,
     },
@@ -63,12 +63,12 @@ const Notice = model("notice", noticeSchema);
 noticeSchema.post("save", handleSaveErrors);
 
 const noticesSchema = Joi.object({
-  category: Joi.string().valueOf(...categorys),
+  category: Joi.string().valid("sell", "in good hands", "lost/found"),
   title: Joi.string(),
   breed: Joi.string(),
   location: Joi.string(),
   sex: Joi.string().valueOf(...gender),
-  price: Joi.string(),
+  price: Joi.string().when("category", { is: "sell", then: Joi.required(), otherwise: Joi.optional() }),
   comments: Joi.string(),
   avatarURL: Joi.string(),
 });
