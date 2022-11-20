@@ -22,15 +22,6 @@ const noticeSchema = new Schema(
       type: String,
       required: [true, "Set title for notice"],
     },
-    age: {
-      type: [String],
-    },
-    name: {
-      type: String,
-    },
-    birthday: {
-      type: String,
-    },
     breed: {
       type: String,
     },
@@ -44,16 +35,12 @@ const noticeSchema = new Schema(
       ref: "user",
     },
     price: {
+      required: function () {
+        return this.category === categorys[0];
+      },
       type: String,
     },
-
     fans: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-      },
-    ],
-    notices: [
       {
         type: Schema.Types.ObjectId,
         ref: "user",
@@ -78,9 +65,6 @@ noticeSchema.post("save", handleSaveErrors);
 const noticesSchema = Joi.object({
   category: Joi.string().valueOf(...categorys),
   title: Joi.string(),
-  age: Joi.string(),
-  name: Joi.string(),
-  birthday: Joi.string(),
   breed: Joi.string(),
   location: Joi.string(),
   sex: Joi.string().valueOf(...gender),
