@@ -1,16 +1,14 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
-const categorys = ["sell", "for-free", "lost-found"];
-const gender = ["male", "female", "young", ""];
+const categorys = ["sell", "in good hands", "lost/found"];
+const gender = ["male", "female"];
 const locationSchema = new Schema({
   city: {
     type: String,
-    // required: [true, "Set city"],
   },
   region: {
     type: String,
-    // required: [true, "Set region"],
   },
 });
 const noticeSchema = new Schema(
@@ -48,8 +46,14 @@ const noticeSchema = new Schema(
     price: {
       type: String,
     },
-    favorite: { type: Boolean, default: false },
+
     fans: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+      },
+    ],
+    notices: [
       {
         type: Schema.Types.ObjectId,
         ref: "user",
@@ -57,6 +61,11 @@ const noticeSchema = new Schema(
     ],
     avatarURL: {
       type: String,
+    },
+    comments: {
+      type: String,
+      minlength: 8,
+      maxlength: 120,
     },
   },
   { versionKey: false, timestamps: true }
@@ -70,13 +79,14 @@ const noticesSchema = Joi.object({
   category: Joi.string().valueOf(...categorys),
   title: Joi.string(),
   age: Joi.string(),
-  place: Joi.string(),
   name: Joi.string(),
   birthday: Joi.string(),
   breed: Joi.string(),
   location: Joi.string(),
   sex: Joi.string().valueOf(...gender),
   price: Joi.string(),
+  comments: Joi.string(),
+  avatarURL: Joi.string(),
 });
 const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean(),
