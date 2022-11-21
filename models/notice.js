@@ -76,13 +76,13 @@ const Notice = model("notice", noticeSchema);
 noticeSchema.post("save", handleSaveErrors);
 
 const noticesSchema = Joi.object({
-  category: Joi.string().valid("sell", "lost-found", "for-free").required(),
+  category: Joi.string().valid("sell", "lost-found", "for-free"),
   price: Joi.number().min(1).when("category", {
     is: "sell",
     then: Joi.required(),
     otherwise: Joi.optional(),
   }),
-  title: Joi.string().required(),
+  title: Joi.string(),
   breed: Joi.string(),
   name: Joi.string(),
   location: Joi.string(),

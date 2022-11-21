@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getById));
 
-router.post("/", authenticate, validateBody(schemas.noticesSchema), upload.single("avatar"), ctrlWrapper(ctrl.add));
+router.post("/category/:category", authenticate, validateBody(schemas.noticesSchema), upload.single("avatar"), ctrlWrapper(ctrl.add));
 
 router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
