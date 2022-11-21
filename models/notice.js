@@ -25,6 +25,9 @@ const noticeSchema = new Schema(
     breed: {
       type: String,
     },
+    name: {
+      type: String,
+    },
     location: locationSchema,
     sex: {
       type: String,
@@ -34,12 +37,7 @@ const noticeSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "user",
     },
-    price: {
-      required: function () {
-        return this.category === "sell";
-      },
-      type: String,
-    },
+    price: { type: String },
     fans: [
       {
         type: Schema.Types.ObjectId,
@@ -63,12 +61,20 @@ const Notice = model("notice", noticeSchema);
 noticeSchema.post("save", handleSaveErrors);
 
 const noticesSchema = Joi.object({
-  category: Joi.string().valid("sell", "in good hands", "lost/found"),
+  category: Joi.array().items({
+    type: Joi.string()
+      .valueOf(...gender)
+      .required(),
+  }),
+  price: Joi.number().when("sell", {
+    is: true,
+    then: Joi.number().min(0).required(),
+  }),
   title: Joi.string(),
   breed: Joi.string(),
+  name: Joi.string(),
   location: Joi.string(),
   sex: Joi.string().valueOf(...gender),
-  price: Joi.string().when("category", { is: "sell", then: Joi.required(), otherwise: Joi.optional() }),
   comments: Joi.string(),
   avatarURL: Joi.string(),
 });
