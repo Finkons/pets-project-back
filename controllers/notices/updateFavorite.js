@@ -5,17 +5,16 @@ const updateFavorite = async (req, res) => {
   const { _id: userId } = req.user;
   const { id: noticeId } = req.params;
 
-  const array = await Notice.findByIdAndUpdate(noticeId, req.body, {
-    new: true,
-  });
-  if (array.favorite) {
-    const result = await Notice.findByIdAndUpdate(noticeId, { $addToSet: { fans: userId._id } }, { new: true });
-    const userFavor = await User.findByIdAndUpdate(userId, { $addToSet: { like: noticeId } }, { new: true });
+  const array = await Notice.findById(noticeId);
+
+  if (array.fans.includes(userId)) {
+    const result = await Notice.findByIdAndUpdate(noticeId, { $pull: { fans: userId._id } }, { new: true });
+    const userFavor = await User.findByIdAndUpdate(userId, { $pull: { like: noticeId } }, { new: true });
     res.json({ result, userFavor });
     return;
   }
-  const result = await Notice.findByIdAndUpdate(noticeId, { $pull: { fans: userId._id } }, { new: true });
-  const userFavor = await User.findByIdAndUpdate(userId, { $pull: { like: noticeId } }, { new: true });
+  const result = await Notice.findByIdAndUpdate(noticeId, { $push: { fans: userId._id } }, { new: true });
+  const userFavor = await User.findByIdAndUpdate(userId, { $push: { like: noticeId } }, { new: true });
   res.json({ result, userFavor });
 };
 
