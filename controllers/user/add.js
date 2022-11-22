@@ -21,8 +21,7 @@ const add = async (req, res) => {
     await User.findByIdAndUpdate(owner, { $push: { pets: result._id } }, { new: true });
     res.status(201).json(result);
   } catch (error) {
-    await fs.unlink(req.file.path);
-    throw error;
+    console.log(error);
   }
 };
 

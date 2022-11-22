@@ -14,13 +14,13 @@ const add = async (req, res) => {
     const resultUpload = path.join(avatarsDir, noticeName);
 
     await fs.rename(tempUpload, resultUpload);
-    const avatarURL = path.join("noticesAvatars", noticeName);
-    const result = await Notice.create({ avatarURL, ...req.body, owner });
+    const noticeData = JSON.parse(req.body.get("data"));
+    const avatar = path.join("noticesAvatars", noticeName);
+    const result = await Notice.create({ avatarURL:avatar, owner, ...noticeData });
     await User.findByIdAndUpdate(owner, { $push: { notices: result._id } }, { new: true });
     res.status(201).json(result);
   } catch (error) {
-    await fs.unlink(req.file.path);
-    throw error;
+   console.log(error)
   }
 };
 
