@@ -4,14 +4,14 @@ const { handleSaveErrors } = require("../helpers");
 const categorys = ["sell", "for-free", "lost-found"];
 const gender = ["male", "female"];
 const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|[0-9][0-9])\d{2})\s*$/;
-// const locationSchema = new Schema({
-//   city: {
-//     type: String,
-//   },
-//   region: {
-//     type: String,
-//   },
-// });
+const locationSchema = new Schema({
+  city: {
+    type: String,
+  },
+  region: {
+    type: String,
+  },
+});
 const noticeSchema = new Schema(
   {
     category: {
@@ -29,10 +29,7 @@ const noticeSchema = new Schema(
     name: {
       type: String,
     },
-     location: {
-      type: String,
-    },
-    // location: locationSchema,
+    location: locationSchema,
     sex: {
       type: String,
       enum: gender,
