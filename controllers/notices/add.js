@@ -5,23 +5,21 @@ const path = require("path");
 
 const avatarsDir = path.join(__dirname, "../../", "public", "noticesAvatars");
 const add = async (req, res) => {
-  try {
-    const { _id: owner } = req.user;
-    const { path: tempUpload, filename } = req.file;
-    const noticeId = Date.now();
-    const extension = filename.split(".").pop();
-    const noticeName = `${noticeId}.${extension}`;
-    const resultUpload = path.join(avatarsDir, noticeName);
+  const { _id: owner } = req.user;
+  const { path: tempUpload, filename } = req.file;
+  const { data } = req.body;
 
-    await fs.rename(tempUpload, resultUpload);
-    const noticeData = JSON.parse(req.body.get("data"));
-    const avatar = path.join("noticesAvatars", noticeName);
-    const result = await Notice.create({ avatarURL:avatar, owner, ...noticeData });
-    await User.findByIdAndUpdate(owner, { $push: { notices: result._id } }, { new: true });
-    res.status(201).json(result);
-  } catch (error) {
-   console.log(error)
-  }
+  const noticeId = Date.now();
+  const extension = filename.split(".").pop();
+  const noticeName = `${noticeId}.${extension}`;
+
+  const resultUpload = path.join(avatarsDir, noticeName);
+  await fs.rename(tempUpload, resultUpload);
+  const avatar = path.join("noticesAvatars", noticeName);
+
+  const result = await Notice.create({ ...JSON.parse(data), avatarURL: avatar, owner });
+  await User.findByIdAndUpdate(owner, { $push: { notices: result._id } }, { new: true });
+  res.status(201).json(result);
 };
 
 module.exports = add;
