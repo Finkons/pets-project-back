@@ -9,15 +9,18 @@ const add = async (req, res) => {
   try {
     const { _id: owner } = req.user;
     const { path: tempUpload, filename } = req.file;
+    const { data } = req.body;
+
     const petId = Date.now();
     const [extension] = filename.split(".").reverse();
     const avatarName = `${petId}.${extension}`;
     const resultUpload = path.join(avatarsDir, avatarName);
 
     await fs.rename(tempUpload, resultUpload);
-    const avatarURL = path.join("petsAvatars", avatarName);
+    const avatar = path.join("petsAvatars", avatarName);
+    console.log(req.body);
 
-    const result = await Pet.create({ avatarURL, ...req.body, owner });
+    const result = await Pet.create({...JSON.parse(data), avatarURL:avatar,  owner });
     await User.findByIdAndUpdate(owner, { $push: { pets: result._id } }, { new: true });
     res.status(201).json(result);
   } catch (error) {
