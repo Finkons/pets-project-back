@@ -17,6 +17,11 @@ const newsSchema = Schema(
     link: {
       type: String,
     },
+    lang: {
+      type: String,
+      default: "en",
+      enum: ["en", "ua", "de", "ru"],
+    },
   },
   { versionKey: false }
 );
