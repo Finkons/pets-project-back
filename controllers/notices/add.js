@@ -1,23 +1,25 @@
 const { Notice } = require("../../models/notice");
 const { User } = require("../../models/user");
-const fs = require("fs/promises");
-const path = require("path");
+const uploadImage = require("../../helpers/uploadImage");
 
-const avatarsDir = path.join(__dirname, "../../", "public", "noticesAvatars");
 const add = async (req, res) => {
   const { _id: owner } = req.user;
-  const { path: tempUpload, filename } = req.file;
-  const { data } = req.body;
-
-  const noticeId = Date.now();
-  const extension = filename.split(".").pop();
-  const noticeName = `${noticeId}.${extension}`;
-
-  const resultUpload = path.join(avatarsDir, noticeName);
-  await fs.rename(tempUpload, resultUpload);
-  const avatar = path.join("noticesAvatars", noticeName);
-
-  const result = await Notice.create({ ...JSON.parse(data), avatarURL: avatar, owner });
+  const { path: tempUpload } = req.file;
+  const avatarURL = await uploadImage(tempUpload);
+  const notice = {
+    title: req.body.title,
+    name: req.body.name,
+    birthday: req.body.birthday,
+    breed: req.body.breed,
+    sex: req.body.sex,
+    location: req.body.location,
+    price: req.body.price,
+    avatarURL: avatarURL,
+    comments: req.body.comments,
+    category: req.body.category,
+    owner: owner,
+  };
+  const result = await Notice.create(notice);
   await User.findByIdAndUpdate(owner, { $push: { notices: result._id } }, { new: true });
   res.status(201).json(result);
 };
