@@ -7,11 +7,12 @@ const multerConfig = multer.diskStorage({
   dest: tempDir,
   filename: (req, file, cb) => {
     cb(null, file.originalname);
+    console.log(222);
   },
 });
 
-const upload = multer({
+const uploader = multer({
   storage: multerConfig,
 });
 
-module.exports = upload;
+module.exports = uploader;
