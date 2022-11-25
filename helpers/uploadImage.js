@@ -14,6 +14,7 @@ const uploadImage = async imagePath => {
     unique_filename: false,
     overwrite: true,
     folder: "avatars",
+    transformation: [{ width: 290, height: 290, crop: "fill" }],
   };
 
   try {
