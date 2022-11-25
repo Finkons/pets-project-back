@@ -1,6 +1,6 @@
-const fs = require("fs/promises");
 const { User } = require("../../models/user");
 const uploadImage = require("../../helpers/uploadImage");
+
 const updateAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
@@ -11,8 +11,7 @@ const updateAvatar = async (req, res) => {
       avatarURL,
     });
   } catch (error) {
-    await fs.unlink(req.file.path);
-    throw error;
+    console.log(error);
   }
 };
 
