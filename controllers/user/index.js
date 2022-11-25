@@ -1,4 +1,4 @@
-const add = require("./add");
+const addPet = require("./addPet");
 const getAll = require("./getAll");
 const deleteById = require("./deleteById");
 const getCurrentUser = require("./getCurrentUser");
@@ -7,7 +7,7 @@ const updateAvatar = require("./updateAvatar");
 const updateData = require("./updateData");
 
 module.exports = {
-  add,
+  addPet,
   getAll,
   deleteById,
   getCurrentUser,

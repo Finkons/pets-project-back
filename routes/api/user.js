@@ -6,7 +6,7 @@ const { validateBody, authenticate, isValidId, upload } = require("../../middlew
 const { petsSchema } = require("../../models/pets");
 const { schemas } = require("../../models/user");
 
-router.post("/", authenticate, validateBody(petsSchema), upload.single("avatar"), ctrlWrapper(ctrl.add));
+router.post("/", authenticate, validateBody(petsSchema), upload.single("avatar"), ctrlWrapper(ctrl.addPet));
 
 router.delete("/:id", authenticate, isValidId, ctrlWrapper(ctrl.deleteById));
 
