@@ -10,16 +10,16 @@ cloudinary.config({
 
 const uploadImage = async imagePath => {
   const options = {
-    use_filename: true,
-    unique_filename: false,
+    use_filename: false,
+    unique_filename: true,
     overwrite: true,
     folder: "avatars",
-    transformation: [{ width: 290, height: 290, crop: "fill" }],
+    transformation: [{ width: 340, height: 340, crop: "fill", gravity: "face" }],
   };
 
   try {
     const result = await cloudinary.uploader.upload(imagePath, options);
-    return result.secure_url;
+    return result;
   } catch (error) {
     console.error(error);
   }
