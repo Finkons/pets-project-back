@@ -1,7 +1,7 @@
 const { Notice } = require("../../models/notice");
 const { User } = require("../../models/user");
 const uploadImage = require("../../helpers/uploadImage");
-// const { RequestError } = require("../../helpers");
+
 
 const add = async (req, res) => {
   try { 
@@ -9,7 +9,6 @@ const add = async (req, res) => {
   const { path: tempUpload } = req.file;
   const avatar = await uploadImage(tempUpload);
   const { data } = req.body;
-  console.log(data);
 
  const result = await Notice.create({...JSON.parse(data), avatarURL:avatar,  owner });
     await User.findByIdAndUpdate(owner, { $push: { notices: result._id } }, { new: true });

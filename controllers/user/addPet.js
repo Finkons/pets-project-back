@@ -5,18 +5,11 @@ const uploadImage = require("../../helpers/uploadImage");
 const addPet = async (req, res) => {
   try {
     const { _id: owner } = req.user;
-    const { path: tempUpload } = req.file;
-    const avatarURL = await uploadImage(tempUpload);
-    const pet = {
-      name: req.body.name,
-      date: req.body.date,
-      breed: req.body.breed,
-      comments: req.body.comments,
-      avatarURL: avatarURL,
-      owner: owner,
-    };
+  const { path: tempUpload } = req.file;
+  const avatar = await uploadImage(tempUpload);
+  const { data } = req.body;
 
-    const result = await Pet.create(pet);
+    const result = await Pet.create({...JSON.parse(data), avatarURL:avatar,  owner });
     await User.findByIdAndUpdate(owner, { $push: { pets: result._id } }, { new: true });
     res.status(201).json(result);
   } catch (error) {
