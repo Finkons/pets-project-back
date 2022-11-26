@@ -4,7 +4,7 @@ const createToken = id => {
   const payload = {
     id,
   };
-  const token = jwt.sign(payload, SECRET_KEY);
+  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "10h" });
   return token;
 };
 
