@@ -2,34 +2,30 @@ const { User } = require("../../models/user");
 const { RequestError } = require("../../helpers");
 const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
+const { createToken } = require("../../helpers");
 
 const register = async (req, res) => {
-  const { name, email, password, phone, address, birthday } = req.body;
+  const { email, password: regPassword, name, location, phone } = req.body;
   const existUser = await User.findOne({ email });
   if (existUser) {
     throw RequestError(409, "Email in use");
   }
-  const hashPassword = await bcrypt.hash(password, 6);
+  const hashPassword = await bcrypt.hash(regPassword, 6);
   const avatarURL = gravatar.url(email);
 
-  const result = await User.create({
-    name,
-    email,
+  const user = await User.create({
+    email: email.toLowerCase(),
     password: hashPassword,
+    name,
+    location,
     phone,
-    address,
-    birthday,
     avatarURL,
   });
-  res.status(201).json({
-    message: "account created successfully",
-    email: result.email,
-    name: result.name,
-    phone: result.phone,
-    address: result.address,
-    birthday: result.birthday,
-    avatarURL,
+  const token = createToken(user._id);
+  await User.findByIdAndUpdate(user._id, { token });
+  res.status(200).json({
+    token,
+    user,
   });
 };
-
 module.exports = register;
