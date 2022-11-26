@@ -78,6 +78,9 @@ const userSchema = new Schema(
         ref: "pets",
       },
     ],
+    idCloud: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );

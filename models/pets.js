@@ -29,6 +29,9 @@ const petSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "user",
     },
+    idCloud: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );
