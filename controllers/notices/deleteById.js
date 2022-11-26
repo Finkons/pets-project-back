@@ -1,6 +1,7 @@
 const { Notice } = require("../../models/notice");
 const { RequestError } = require("../../helpers");
 const { deleteImage } = require("../../helpers");
+
 const deleteById = async (req, res) => {
   const { id } = req.params;
   const data = await Notice.findById(id);
