@@ -5,10 +5,12 @@ const updateAvatar = async (req, res) => {
   try {
     const { _id } = req.user;
     const { path: tempUpload } = req.file;
-    const avatarURL = await uploadImage(tempUpload);
-    await User.findByIdAndUpdate(_id, { avatarURL });
+    const avatar = await uploadImage(tempUpload);
+
+    
+    await User.findByIdAndUpdate(_id, { avatarURL:avatar });
     res.json({
-      avatarURL,
+      avatarURL:avatar,
     });
   } catch (error) {
     console.log(error);
