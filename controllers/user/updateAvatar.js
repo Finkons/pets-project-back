@@ -12,13 +12,10 @@ const updateAvatar = async (req, res) => {
       await deleteImage(idPublic);
     }
     const data = await uploadImage(tempUpload);
-    const avatarURL = data.secure_url;
+    const avatar = data.secure_url;
     const idCloud = data.public_id;
-    await User.findByIdAndUpdate(_id, { avatarURL, idCloud });
-    res.json({
-      avatarURL,
-      idCloud,
-    });
+   const result =  await User.findByIdAndUpdate(_id, { avatarURL:avatar, idCloud }, { new: true });
+   res.status(200).json(result);
   } catch (error) {
     console.log(error);
   }
