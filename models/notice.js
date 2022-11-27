@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
 const categorys = ["sell", "for-free", "lost-found"];
 const gender = ["male", "female"];
-const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|[0-9][0-9])\d{2})\s*$/;
+const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/;
 
 const noticeSchema = new Schema(
   {

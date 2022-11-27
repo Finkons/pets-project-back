@@ -1,7 +1,7 @@
 const Joi = require("joi").extend(require("@joi/date"));
 const { Schema, model } = require("mongoose");
 const { handleSaveErrors } = require("../helpers");
-
+const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/;
 const petSchema = new Schema(
   {
     name: {
@@ -45,6 +45,7 @@ const petsSchema = Joi.object({
   date: Joi.date().format("DD.MM.YYYY"),
   breed: Joi.string().min(2).max(16),
   comments: Joi.string().min(8).max(120),
+  data: Joi.string().pattern(new RegExp(birthdayRegexp)),
 });
 
 module.exports = { petsSchema, Pet };
