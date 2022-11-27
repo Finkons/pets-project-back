@@ -5,7 +5,7 @@ const { handleSaveErrors } = require("../helpers");
 const nameRegexp = /^\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+$/;
 const emailRegexp = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
 const phoneRegexp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/;
-const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|[0-9][0-9])\d{2})\s*$/;
+const birthdayRegexp = /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/;
 
 const userSchema = new Schema(
   {
@@ -92,9 +92,8 @@ const registerSchema = Joi.object({
   name: Joi.string().required(),
   address: Joi.string(),
   phone: Joi.string().pattern(new RegExp(phoneRegexp)),
-  password: Joi.string()
-    .required()
-    .messages({ "string.pattern.base": "A password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number with no spaces" }),
+  password: Joi.string().min(7).max(32).required(),
+  confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
   email: Joi.string().pattern(new RegExp(emailRegexp)).required(),
   birthday: Joi.string().pattern(new RegExp(birthdayRegexp)),
 });
