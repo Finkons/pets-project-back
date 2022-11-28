@@ -5,7 +5,7 @@ const gravatar = require("gravatar");
 const { createToken } = require("../../helpers");
 
 const register = async (req, res) => {
-  const { email, password: regPassword, name, location, phone } = req.body;
+  const { email, password: regPassword, name, address, phone } = req.body;
   const existUser = await User.findOne({ email });
   if (existUser) {
     throw RequestError(409, "Email in use");
@@ -17,7 +17,7 @@ const register = async (req, res) => {
     email: email.toLowerCase(),
     password: hashPassword,
     name,
-    location,
+    address,
     phone,
     avatarURL,
   });
