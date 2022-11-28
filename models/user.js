@@ -104,9 +104,10 @@ const loginSchema = Joi.object({
 });
 const updateSchema = Joi.object({
   name: Joi.string(),
+  email: Joi.string().pattern(new RegExp(emailRegexp)).messages({ "string.pattern.base": `Please put a valid email` }),
+  birthday: Joi.string().pattern(birthdayRegexp).messages({ "string.pattern.base": `Please put valid date in format D.M.YYYY` }),
+  phone: Joi.string().min(8).max(16).pattern(phoneRegexp).messages({ "string.pattern.base": `Phone number must have 10 digits.` }),
   address: Joi.string(),
-  phone: Joi.string().pattern(phoneRegexp).messages({ "string.pattern.base": `Phone number must have 10 digits.` }),
-  birthday: Joi.string().pattern(birthdayRegexp).messages({ "string.pattern.base": `DD.MM.YYYY` }),
 });
 
 const schemas = { registerSchema, loginSchema, updateSchema };

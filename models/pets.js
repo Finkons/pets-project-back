@@ -9,6 +9,10 @@ const petSchema = new Schema(
       minlength: 2,
       maxlength: 16,
     },
+    birthday: {
+      type: String,
+      match: birthdayRegexp,
+    },
     date: {
       type: String,
     },
@@ -45,7 +49,7 @@ const petsSchema = Joi.object({
   date: Joi.date().format("DD.MM.YYYY"),
   breed: Joi.string().min(2).max(16),
   comments: Joi.string().min(8).max(120),
-  data: Joi.string().pattern(new RegExp(birthdayRegexp)),
+  birthday: Joi.string().pattern(new RegExp(birthdayRegexp)),
 });
 
 module.exports = { petsSchema, Pet };
